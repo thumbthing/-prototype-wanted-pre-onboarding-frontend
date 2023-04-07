@@ -1,8 +1,14 @@
+import { ReactNode } from "react";
+import styled from "styled-components";
+import Header from "../components/Header";
+import PageLayout from "../components/PageLayout";
+import Login from "../components/Login";
 
 export default function MainPage() {
   return (
-    <div>
-      <h2>start</h2>
-    </div>
+    <PageLayout>
+      <Header />
+      <Login />
+    </PageLayout>
   )
 }
