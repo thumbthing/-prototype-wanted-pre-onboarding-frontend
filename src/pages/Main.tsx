@@ -12,3 +12,8 @@ export default function MainPage() {
     </PageLayout>
   )
 }
+
+const StyledPageLayout = styled.div`
+  display: flex;
+`
+
