@@ -1,14 +1,16 @@
+import { ReactNode } from "react";
 import Header from "../components/Header";
 import PageLayout from "../components/PageLayout";
-import Signup from "../components/Signup";
+import Login from "../components/Login";
 
-
-export default function SignupPage() {
+export default function LoginPage() {
   return (
     <PageLayout>
       <Header />
-      <Signup />
+      <Login />
     </PageLayout>
   )
 }
+
+
 

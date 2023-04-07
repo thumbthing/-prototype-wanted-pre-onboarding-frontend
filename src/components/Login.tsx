@@ -40,13 +40,12 @@ export default function Login() {
         onChange = { CheckValidPassword }
       />
       <button 
-        data-testid = "signup-button"
+        data-testid = "signin-button"
         onClick = { SetValidUserInformation }
         disabled = { disable }
       >
       로그인  
       </button>
-  
     </>
   )
 }
