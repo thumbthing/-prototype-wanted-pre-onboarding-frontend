@@ -9,15 +9,25 @@ export default function Login() {
 
   const CheckValidEmail = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     setId(e.target.value);
+    if(!id.includes("@")) {
+      setDisable(true)
+    } else {
+      setDisable(false)
+      console.log("asdf")
+    }
   }
   
   const CheckValidPassword = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     setPassword(e.target.value);
+    if(password.length < 8) {
+      setDisable(true)
+    } else {
+      setDisable(false)
+    }
   }
   
   const SetValidUserInformation = () => {
-    ( !id.includes("@") || password.length < 8 ? 
-     setDisable(true) : navigate("/todo"))
+    navigate("/todo")
   }
 
   return (
