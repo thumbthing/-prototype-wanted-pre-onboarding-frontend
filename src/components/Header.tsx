@@ -1,10 +1,12 @@
-import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Header() {
-  const handleBack = useCallback(() => {
-    window.history.back();
-  }, []);
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/");
+  };
 
   return (
     <StyledHeader>
