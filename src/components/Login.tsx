@@ -31,6 +31,7 @@ export default function Login() {
 
   return (
     <>
+    <h1>로그인</h1>
     <h2>아이디</h2>
       <input 
         data-testid = "email-input"
