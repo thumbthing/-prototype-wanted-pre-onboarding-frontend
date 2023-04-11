@@ -13,7 +13,6 @@ export default function Login() {
       setDisable(true)
     } else {
       setDisable(false)
-      console.log("asdf")
     }
   }
   
@@ -27,16 +26,18 @@ export default function Login() {
   }
   
   const SetValidUserInformation = () => {
-    navigate("/todo")
+    navigate("/todo");
   }
 
   return (
     <>
+    <h2>아이디</h2>
       <input 
         data-testid = "email-input"
         value = { id }
         onChange={ CheckValidEmail }
       />
+      <h2>비밀번호</h2>
       <input
         data-testid = "password-input"
         value = { password }

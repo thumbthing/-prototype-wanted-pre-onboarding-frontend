@@ -10,7 +10,7 @@ export default function MainPage() {
     <PageLayout>
       <Header />
       <StyledContainer>
-        <StyledButton placeholder="로그인" onClick={ () => navigate("/signin")} />
+        <StyledButton placeholder="로그인" onClick={ () => navigate("/signin") } />
         <StyledButton placeholder="회원가입" onClick={ () => navigate("/signup") } />
       </StyledContainer>
     </PageLayout>

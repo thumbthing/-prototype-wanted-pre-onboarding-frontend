@@ -7,25 +7,44 @@ export default function Signup() {
   const [ disable, setDisable ] = useState(false);
   const navigate = useNavigate();
   
+  const CheckValidEmail = ( e: React.ChangeEvent<HTMLInputElement> ) => {
+    setId(e.target.value);
+    if(!id.includes("@")) {
+      setDisable(true)
+    } else {
+      setDisable(false)
+    }
+  }
+  
+  const CheckValidPassword = ( e: React.ChangeEvent<HTMLInputElement> ) => {
+    setPassword(e.target.value);
+    if(password.length < 8) {
+      setDisable(true)
+    } else {
+      setDisable(false)
+    }
+  }
+
   const SetValidUserInformation = () => {
-    ( !id.includes("@") || password.length < 8 ?
-     setDisable(true) : navigate("/signin") )
+    navigate("/signin");
   }
 
   return (
     <>
+    <h2>아이디</h2>
       <input 
         data-testid = "email-input"
         value = { id }
-        onChange={ (e) => setId(e.target.value) }
+        onChange={ CheckValidEmail }
       />
+    <h2>비밀번호</h2>
       <input
         data-testid = "password-input"
         value = { password }
-        onChange = { (e) => setPassword(e.target.value) }
+        onChange = { CheckValidPassword }
       />
       <button 
-        data-testid = "signin-button"
+        data-testid = "signup-button"
         onClick = { SetValidUserInformation }
         disabled = { disable }
       >
