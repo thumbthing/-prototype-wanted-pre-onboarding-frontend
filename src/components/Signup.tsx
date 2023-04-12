@@ -1,11 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { request } from "../request/Api";
 
 export default function Signup() {
   const [ id, setId ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ disable, setDisable ] = useState(false);
+  const userForm = {
+    email: id,
+    password: password,
+  };
+  
   const navigate = useNavigate();
   
   const checkValidEmail = ( e: React.ChangeEvent<HTMLInputElement> ) => {
@@ -26,23 +32,15 @@ export default function Signup() {
     }
   }
 
+
   const signUp = async () => {
     try {
-      const response = await axios({
-        url: 'http://localhost:8000/auth/signup',
-        method: 'post',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        data: {
-          email: id,
-          password: password
-        }
-      })
-      console.log(response)
-    } catch (e) {
-      console.log("fail to signup");
+      request.post("/auth/signup", userForm); 
+    } catch (error) {
+      console.log(error);
     }
+    alert("로그인 페이지로 이동합니다.")
+    navigate("/signin");
   }
 
   return (
