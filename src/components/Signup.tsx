@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { request } from "../request/Api";
 
@@ -40,8 +40,6 @@ export default function Signup() {
       request.post("/auth/signup", userForm); 
     } catch (error) {
       console.log(error);
-    } finally {
-      const reponse = request.post("/auth/signin")
     }
     alert("로그인 페이지로 이동합니다.")
     navigate("/signin");
