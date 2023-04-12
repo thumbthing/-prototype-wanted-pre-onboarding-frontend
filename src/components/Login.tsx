@@ -36,7 +36,10 @@ export default function Login() {
       return setDisable(true)
     } else {
       try {
-      request.post("/auth/signin", userForm); 
+      request.post("/auth/signin", userForm).then( response => {
+        const { accessToken } = response.data;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+      }); 
     } catch (error) {
       console.log(error);
     }
