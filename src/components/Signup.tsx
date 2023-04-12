@@ -16,31 +16,36 @@ export default function Signup() {
   
   const checkValidEmail = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     setId(e.target.value);
-    if(!id.includes("@")) {
-      setDisable(true)
-    } else {
+    if (id.includes("@") && password.length > 8) {
       setDisable(false)
+    } else {
+      setDisable(true)
     }
   }
   
   const checkValidPassword = ( e: React.ChangeEvent<HTMLInputElement> ) => {
     setPassword(e.target.value);
-    if(password.length < 8) {
-      setDisable(true)
-    } else {
+    if (id.includes("@") && password.length > 8) {
       setDisable(false)
+    } else {
+      setDisable(true)
     }
   }
-
-
+  
   const signUp = async () => {
-    try {
+    if (!id.includes("@") || password.length < 8) {
+      return setDisable(true)
+    } else {
+      try {
       request.post("/auth/signup", userForm); 
     } catch (error) {
       console.log(error);
+    } finally {
+      const reponse = request.post("/auth/signin")
     }
     alert("로그인 페이지로 이동합니다.")
     navigate("/signin");
+    }     
   }
 
   return (
@@ -49,12 +54,14 @@ export default function Signup() {
     <h2>아이디</h2>
       <input 
         data-testid = "email-input"
+        type="email"
         value = { id }
         onChange={ checkValidEmail }
       />
     <h2>비밀번호</h2>
       <input
         data-testid = "password-input"
+        type="password"
         value = { password }
         onChange = { checkValidPassword }
       />
